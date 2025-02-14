@@ -28,3 +28,11 @@ Step 5: Set Up the Database and schema by running following commands
 Step 6 : start the server and build the app by running following commands
   symfony serve: start -d
   yarn encore dev 
+
+
+curl request :
+
+curl -X POST http://127.0.0.1:8000/api/pet/create \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Buddy","type":"Dog","breed":"Labrador","dateOfBirth":"2020-01-01","gender":"Male","isDangerous":0}'
+
