@@ -1,0 +1,51 @@
+@use 'bootstrap/scss/bootstrap' as *;
+
+@media (max-width: 576px) { 
+    .paw-pattern {
+        gap: 10px !important;
+    }
+    .paw-pattern i {
+        font-size: 20px !important;
+    }
+    section {
+        padding: 0 !important;
+    }
+    
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #D3D3D3;
+    font-size:16px;
+}
+section {
+    padding: 50px 0;
+}
+h2{
+    color :#0a496c!important;
+}
+.bg-light {
+    background-color: #f1f1f1;
+}
+.paw-pattern {
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    gap: 20px;
+}
+
+.paw-pattern i {
+    font-size: 30px;
+}
+
+.green {
+    color: green;
+    transform: rotate(90deg);
+}
+
+.grey {
+    color: lightgrey;
+    transform: rotate(90deg);
+}
+.paw-shift {
+    margin-top: 15px;
+}

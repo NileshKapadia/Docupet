@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pet Registration{% endblock %}
+
+{% block body %}
+    <section class="py-md-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-10 bg-light mx-auto p-4">
+                    <div class="paw-pattern mb-2">
+                        <i class="fas fa-paw green"></i>
+                        <i class="fas fa-paw green paw-shift"></i>
+                        <i class="fas fa-paw grey"></i>
+                        <i class="fas fa-paw grey paw-shift"></i>
+                        <i class="fas fa-paw grey"></i>
+                        <i class="fas fa-paw grey paw-shift"></i>
+                    </div>
+                    <h2 class="mb-2">Tell us about your pet</h2>
+                    {{ form_start(form) }}
+                        {{ form_row(form.name) }}
+                        {{ form_row(form.type) }}
+                        <div class="breed">
+                            <label for="pet_breed">What breed are they?</label>
+                            <select id="pet_breed"  required name="pet[breed]" class="form-control"  >
+                                <option disabled value="Select a pet type first">Select a pet type first</option>
+                            </select>
+                        </div>
+                        <div id="not_listed_options" class="my-3 d-none">
+                            <label>Choose One</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="unknown_breed" id="dont_know" value="I don't know">
+                                <label class="form-check-label" for="dont_know">I don't know</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="unknown_breed" id="its_a_mix" value="It's a mix">
+                                <label class="form-check-label" for="its_a_mix">It's a mix</label>
+                            </div>
+                        </div>
+                        <div id="mix_breed_field" class="d-none">
+                            <input type="text" class="form-control" name="mix_breed" id="mix_breed" placeholder="Enter breed">
+                        </div>
+                        <div class="my-3">
+                            <label class="mb-2 d-block">What gender are they?</label>
+                            <div class="btn-group" role="group" aria-label="Gender selection">
+                                <input type="radio" class="btn-check" name="gender" id="male" value="Male" autocomplete="off" required>
+                                <label class="btn btn-outline-primary" for="male">Male</label>
+                                <input type="radio" class="btn-check" name="gender" id="female" value="Female" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="female">Female</label>
+                            </div>
+                        </div>                                     
+                        {{ form_row(form.isDangerous) }}
+                        <div class="my-3">
+                            <label class="mb-2 d-block">Do you know their date of birth?</label>
+                            <div class="btn-group" role="group" aria-label="dob selection">
+                                <input type="radio" class="btn-check" name="dob" id="yes" value="Yes" autocomplete="off" required>
+                                <label class="btn btn-outline-primary" for="yes">Yes</label>
+
+                                <input type="radio" class="btn-check" name="dob" id="no" value="No" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="no">No</label>
+                            </div>
+                        </div>   
+                        <div class="d-none" id="dob_field">
+                            <label for="pet_dateOfBirth">Date of birth</label>
+                            <input type="date" id="pet_dateOfBirth" name="pet[dateOfBirth]" class="form-control mb-3" max="{{ "now"|date("Y-m-d") }}">                    
+                        </div>
+                        <div id="approx_age_field" class="d-none">
+                            <label>Enter Approximate Age:</label>
+                            <input type="number" class="form-control" name="approximate_age" id="approximate_age" placeholder="Enter age in years">
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-3">Save Pet</button>
+                        <div style="display: none;">
+                            {{ form_row(form.breed) }}
+                            {{ form_row(form.gender) }}
+                            {{ form_row(form.approximateAge) }} 
+                            {{ form_row(form.dateOfBirth) }}
+                        </div>
+                    {{ form_end(form) }}
+                    <div class="d-none text-danger" id="error-message"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

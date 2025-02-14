@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="py-5">
+    <div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0">Pet Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong> {{ pet.name }}</p>
+                        <p><strong>Type:</strong> {{ pet.type }}</p>
+                        <p><strong>Breed:</strong> {{ pet.breed }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <p><strong>Gender:</strong> 
+                            <span class="badge bg-info text-dark">{{ pet.gender }}</span>
+                        </p>
+                        {% if pet.dateOfBirth %}
+                            <p><strong>Date of Birth:</strong> {{ pet.dateOfBirth|date('Y-m-d') }}</p>
+                        {% endif %}
+                        {% if pet.approximateAge %}
+                            <p><strong>Age:</strong> {{ pet.approximateAge }}</p> 
+                        {% endif %}                      
+                        <p><strong>Dangerous:</strong> 
+                            {% if pet.isDangerous %}
+                                <span class="badge bg-danger">Yes</span>
+                            {% else %}
+                                <span class="badge bg-success">No</span>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="/" class="btn btn-primary">
+                    <i class="bi bi-arrow-left"></i> Back to Create Pet
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
